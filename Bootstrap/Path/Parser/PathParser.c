@@ -41,7 +41,16 @@ void parsePathTokens(
     struct PathParser * parser,
     struct ListOfPathTokens * tokenList) {
 
-    
+    // while (!isPathTokenizerAtEof(&parser->tokenizer)) {
+
+    //     // copyAndAppendPathToken()
+    // }
+
+    while (!isPathTokenizerAtEof(&parser->tokenizer)) {
+
+        
+    }
+
 }
 
 

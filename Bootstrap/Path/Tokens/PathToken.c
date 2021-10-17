@@ -1,5 +1,39 @@
 #include "PathToken.h"
 
+void copyAndAppendPathToken(
+    struct ListOfPathTokens * tokenList,
+    const struct PathToken * token) {
+
+    int newLength = tokenList->length + 1;
+
+    ///
+
+    struct PathToken newTokenList[newLength];
+
+    ///
+
+    for (int i = 1; i <= tokenList->length; i++) {
+
+        struct PathToken existing = tokenList->tokens[i - 1];
+
+        ///
+
+        struct PathToken * new = &newTokenList[i];
+
+        ///
+
+        new = &existing;
+    }
+
+    ///
+
+    struct PathToken * last = &newTokenList[newLength - 1];
+
+    last = (struct PathToken *) token;
+}
+
+///
+
 void getPathTokenStart(
     const struct PathToken * token,
     struct SourceLocation * sourceLocation) {

@@ -82,3 +82,44 @@ const bool isScannerAtEof(
 
     return scanner->rawPosition >= scanner->length;
 }
+
+///
+
+void rawNextLength(
+    struct Scanner * scanner,
+    int length,
+    char * buffer) {
+
+    switch (scanner->scannerType) {
+
+    case scannerTypeFile:
+
+        if (fseek((FILE *) scanner->value.file, scanner->rawPosition, SEEK_SET) != 0) {
+
+            // FIXME: throw error
+        }
+
+        ///
+
+        if (fread(buffer, sizeof(char), length, (FILE *) scanner->value.file) != length) {
+
+            // FIXME: throw error
+        }
+
+        return;
+
+    ///
+
+    case scannerTypeSource:
+
+        strncpy(buffer, &scanner->value.source[scanner->rawPosition], length);
+
+        return;
+
+    ///
+
+    default:
+
+        break; // FIXME: throw error
+    }
+}

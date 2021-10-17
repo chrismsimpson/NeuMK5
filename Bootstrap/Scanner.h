@@ -68,7 +68,14 @@ extern void initScannerFromSource(
 
 ///
 
-const bool isScannerAtEof(
+extern const bool isScannerAtEof(
     const struct Scanner * scanner);
+
+///
+
+extern void rawNextLength(
+    struct Scanner * scanner,
+    int length,
+    char * buffer);
 
 #endif

@@ -23,6 +23,12 @@ extern void deinitTokenizer(
 
 ///
 
+extern void getNextPathToken(
+    struct PathTokenizer * tokenizer,
+    struct OptionalPathToken * token);
+
+///
+
 extern void getPathTokenizerPosition(
     const struct PathTokenizer * tokenizer,
     struct SourceLocation * sourceLocation);
@@ -39,9 +45,7 @@ extern void initPathTokenizerFromSource(
 
 ///
 
-extern bool isPathTokenizerEof(
-    struct PathTokenizer * tokenizer);
-
-
+extern bool isPathTokenizerAtEof(
+    const struct PathTokenizer * tokenizer);
 
 #endif

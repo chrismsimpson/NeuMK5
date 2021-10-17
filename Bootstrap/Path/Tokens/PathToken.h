@@ -1,6 +1,8 @@
 #ifndef PATH_TOKEN_H
 #define PATH_TOKEN_H
 
+#include <stdbool.h>
+
 #include "../../SourceLocation.h"
 
 #include "PathComponent.h"
@@ -32,6 +34,19 @@ struct PathToken {
 
     const union PathTokenValue value;
 };
+
+struct OptionalPathToken {
+
+    const bool hasValue;
+
+    const struct PathToken value;
+};
+
+///
+
+extern void copyAndAppendPathToken(
+    struct ListOfPathTokens * tokenList,
+    const struct PathToken * token);
 
 ///
 

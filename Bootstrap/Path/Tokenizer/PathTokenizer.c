@@ -1,5 +1,11 @@
 #include "PathTokenizer.h"
 
+void rawGetNextPathToken(
+    struct PathTokenizer * tokenizer,
+    struct PathToken * token);
+
+///
+
 void deinitTokenizer(
     struct PathTokenizer * tokenizer) {
 
@@ -7,6 +13,113 @@ void deinitTokenizer(
 }
 
 ///
+
+void getNextPathToken(
+    struct PathTokenizer * tokenizer,
+    struct OptionalPathToken * token) {
+
+    const struct PathToken * v = &token->value;
+
+    ///
+
+    if (tokenizer->rawPosition + 1 <= tokenizer->tokenList.length) {
+
+        const struct PathToken * t = &tokenizer->tokenList.tokens[tokenizer->rawPosition];
+
+        ///
+
+        tokenizer->rawPosition += 1;
+
+        ///
+
+        v = t;
+
+        * (bool *) token->hasValue = true;
+
+        return;
+    }
+
+    ///
+
+    if (isScannerAtEof(&tokenizer->scanner)) {
+
+        v = NULL;
+
+        * (bool *) token->hasValue = false;
+    }
+
+    ///
+
+    const struct PathToken next;
+
+    rawGetNextPathToken(tokenizer, (struct PathToken *) &next);
+
+    ///
+
+    copyAndAppendPathToken((struct ListOfPathTokens *) &tokenizer->tokenList, &next);
+
+    ///
+
+    tokenizer->rawPosition += 1;
+
+    ///
+
+    v = &next;
+
+    * (bool *) token->hasValue = true;
+}
+
+void rawGetNextPathToken(
+    struct PathTokenizer * tokenizer,
+    struct PathToken * token) {
+
+    const char nextChar;
+
+    rawNextLength((struct Scanner *) &tokenizer->scanner, 1, (char *) &nextChar);
+
+    ///
+
+    switch (nextChar) {
+
+    case '/':
+
+        break;
+
+    ///
+
+    case '\\':
+        
+        break;
+
+    ///
+
+    default:
+
+        break;
+    }
+}
+
+// void getNextPathToken(
+//     struct PathTokenizer * tokenizer,
+//     struct PathToken * token) {
+
+//     if (tokenizer->rawPosition + 1 <= tokenizer->tokenList.length) {
+
+//         token = (struct PathToken *) &tokenizer->tokenList.tokens[tokenizer->rawPosition];
+
+//         tokenizer->rawPosition += 1;
+
+//         return;
+//     }
+
+//     ///
+
+//     if (isScannerAtEof(&tokenizer->scanner)) {
+
+//     }
+
+//     ///
+// }
 
 void getPathTokenizerPosition(
     const struct PathTokenizer * tokenizer,
@@ -66,8 +179,8 @@ void initPathTokenizerFromSource(
 
 ///
 
-extern bool isPathTokenizerEof(
-    struct PathTokenizer * tokenizer) {
+extern bool isPathTokenizerAtEof(
+    const struct PathTokenizer * tokenizer) {
 
     
 
