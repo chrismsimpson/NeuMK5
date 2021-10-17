@@ -1,5 +1,31 @@
 #include "PathToken.h"
 
+void getPathTokenStart(
+    const struct PathToken * token,
+    struct SourceLocation * sourceLocation) {
+
+    switch (token->tokenType) {
+
+    case pathTokenTypeComponent:
+
+        break;
+
+    ///
+
+    case pathTokenTypePunc:
+
+        break;
+
+    ///
+    
+    default:
+
+        break; // FIXME: throw an error
+    }
+}
+
+///
+
 void initEmptyListOfPathTokens(
     struct ListOfPathTokens * tokenList) {
 
@@ -11,13 +37,3 @@ void initEmptyListOfPathTokens(
 
     * (int *) &tokenList->length = 0;
 }
-
-// void initEmptyListOfPathTokens(
-//     struct ListOfPathTokens * tokenList,
-//     const struct PathToken * tokens,
-//     const int length) {
-
-//     tokenList->tokens = tokens;
-
-//     * (int *) &tokenList->length = length;
-// }

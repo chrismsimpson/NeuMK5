@@ -1,6 +1,8 @@
 #ifndef PATH_TOKEN_H
 #define PATH_TOKEN_H
 
+#include "../../SourceLocation.h"
+
 #include "PathComponent.h"
 #include "PathPunc.h"
 
@@ -33,12 +35,13 @@ struct PathToken {
 
 ///
 
+extern void getPathTokenStart(
+    const struct PathToken * token,
+    struct SourceLocation * sourceLocation);
+
+///
+
 extern void initEmptyListOfPathTokens(
     struct ListOfPathTokens * tokenList);
-
-// extern void initEmptyListOfPathTokens(
-//     struct ListOfPathTokens * tokenList,
-//     const struct PathToken * tokens,
-//     const int length);
 
 #endif

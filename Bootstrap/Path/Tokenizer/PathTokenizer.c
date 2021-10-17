@@ -8,6 +8,24 @@ void deinitTokenizer(
 
 ///
 
+void getPathTokenizerPosition(
+    const struct PathTokenizer * tokenizer,
+    struct SourceLocation * sourceLocation) {
+
+    if (tokenizer->rawPosition + 1 <= tokenizer->tokenList.length) {
+
+        getPathTokenStart(&tokenizer->tokenList.tokens[tokenizer->rawPosition], (struct SourceLocation *) &sourceLocation);
+
+        return;   
+    }
+
+    ///
+
+    getScannerPosition(&tokenizer->scanner, sourceLocation);
+}
+
+///
+
 void initPathTokenizer(
     struct PathTokenizer * tokenizer,
     const struct Scanner * scanner) {
@@ -44,4 +62,14 @@ void initPathTokenizerFromSource(
     ///
 
     initPathTokenizer(tokenizer, (const struct Scanner *) &scanner);
+}
+
+///
+
+extern bool isPathTokenizerEof(
+    struct PathTokenizer * tokenizer) {
+
+    
+
+    return false;
 }

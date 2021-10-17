@@ -46,6 +46,12 @@ extern void deinitScanner(
 
 ///
 
+extern void getScannerPosition(
+    const struct Scanner * scanner,
+    struct SourceLocation * SourceLocation);
+
+///
+
 extern void initScanner(
     struct Scanner * scanner,
     const enum ScannerType scannerType,
@@ -59,6 +65,8 @@ extern void initScannerFromFilename(
 extern void initScannerFromSource(
     struct Scanner * scanner,
     const char * source);
+
+///
 
 const bool isScannerAtEof(
     const struct Scanner * scanner);

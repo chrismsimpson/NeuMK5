@@ -6,6 +6,17 @@ void deinitScanner(
     // TODO
 }
 
+///
+
+void getScannerPosition(
+    const struct Scanner * scanner,
+    struct SourceLocation * sourceLocation) {
+
+    
+}
+
+///
+
 void initScanner(
     struct Scanner * scanner,
     const enum ScannerType scannerType,
