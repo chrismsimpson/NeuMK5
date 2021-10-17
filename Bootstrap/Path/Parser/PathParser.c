@@ -41,16 +41,23 @@ void parsePathTokens(
     struct PathParser * parser,
     struct ListOfPathTokens * tokenList) {
 
-    // while (!isPathTokenizerAtEof(&parser->tokenizer)) {
-
-    //     // copyAndAppendPathToken()
-    // }
-
     while (!isPathTokenizerAtEof(&parser->tokenizer)) {
 
-        
-    }
+        const struct OptionalPathToken token;
 
+        getNextPathToken((struct PathTokenizer *) &parser->tokenizer, (struct OptionalPathToken *) &token);
+
+        ///
+
+        if (!token.hasValue) {
+
+            break;
+        }
+
+        ///
+
+        copyAndAppendPathToken(tokenList, &token.value);
+    }
 }
 
 

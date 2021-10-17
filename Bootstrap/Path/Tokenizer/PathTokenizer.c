@@ -34,7 +34,7 @@ void getNextPathToken(
 
         v = t;
 
-        * (bool *) token->hasValue = true;
+        * (bool *) &token->hasValue = true;
 
         return;
     }
@@ -45,7 +45,9 @@ void getNextPathToken(
 
         v = NULL;
 
-        * (bool *) token->hasValue = false;
+        * (bool *) &token->hasValue = false;
+
+        return;
     }
 
     ///
