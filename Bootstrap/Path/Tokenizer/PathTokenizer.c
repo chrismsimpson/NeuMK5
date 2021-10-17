@@ -99,27 +99,7 @@ void rawGetNextPathToken(
     }
 }
 
-// void getNextPathToken(
-//     struct PathTokenizer * tokenizer,
-//     struct PathToken * token) {
-
-//     if (tokenizer->rawPosition + 1 <= tokenizer->tokenList.length) {
-
-//         token = (struct PathToken *) &tokenizer->tokenList.tokens[tokenizer->rawPosition];
-
-//         tokenizer->rawPosition += 1;
-
-//         return;
-//     }
-
-//     ///
-
-//     if (isScannerAtEof(&tokenizer->scanner)) {
-
-//     }
-
-//     ///
-// }
+///
 
 void getPathTokenizerPosition(
     const struct PathTokenizer * tokenizer,
